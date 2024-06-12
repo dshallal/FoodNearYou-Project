@@ -81,7 +81,7 @@ function DNBodyPage(){
     const options = {
         enableHighAccuracy: true
       };
-   /* function distancer(){
+   function distancer(){
         fromAddress(splitter()[3])
         .then(({ results }) => {
           const { lat, lng } = results[0].geometry.location;
@@ -103,7 +103,7 @@ function DNBodyPage(){
               alert("nope");
             }
           })
-    } */
+    } 
    useEffect(() => {
         var starss = document.querySelector(".stars");
         if(starss.innerHTML.charAt(0) == "3"){
@@ -135,7 +135,11 @@ function DNBodyPage(){
             affordd.innerHTML = "Slightly Costly";
             changerr("afford2");
         }
-        else if(checkk.innerHTML.includes("d")){
+        else if(checkk.innerHTML.includes("$$$") || checkk.innerHTML.includes("100")){
+            affordd.innerHTML = "Costly";
+            changerr("afford3");
+        }
+        else{
             affordd.innerHTML = "Affordable";
             changerr("afford");
         }
@@ -154,11 +158,11 @@ function DNBodyPage(){
     function indexx(){
         if(indexer == arr_total.length -1){
             change_index(2);
-          //  distancer();
+          distancer();
         }
         else{
             change_index((c) => c +1);
-              //  distancer();
+              distancer();
               if(indexer2 == arr_total2.length -1){
                 change_index2(2);
               }
