@@ -158,11 +158,11 @@ function DNBodyPage(){
     function indexx(){
         if(indexer == arr_total.length -1){
             change_index(2);
-          distancer();
+          //distancer();
         }
         else{
             change_index((c) => c +1);
-              distancer();
+              //distancer();
               if(indexer2 == arr_total2.length -1){
                 change_index2(2);
               }
