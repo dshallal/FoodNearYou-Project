@@ -188,8 +188,8 @@ function FFBodyPage(){
             </div>
         </div>
         <div class = "pic_div">
-            <div class = "pic_div2">
-            <img src = {vimage} class = "res_img"></img>
+            <div class = "pic_div3">
+            <img src = {vimage} class = "res_img2"></img>
             </div>
             <div class = "divver">{distance}</div>
         </div>

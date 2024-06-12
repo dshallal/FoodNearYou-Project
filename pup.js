@@ -5,6 +5,7 @@ const puppeteer = require("puppeteer");
     const context = await browser.createBrowserContext();
     await context.overridePermissions("https://google.com/", ["geolocation"]);
     const page = await context.newPage();
+    
     await page.goto("https://www.google.com/", {waitUntil: "domcontentloaded"});
     await page.waitForSelector('#APjFqb', {visible: true});
     await page.type('#APjFqb', "Fast Food Near Me");
@@ -82,7 +83,7 @@ const puppeteer = require("puppeteer");
     for(let i = 0; i < quotesArr10.length; i++){
         await page.goto("https://images.google.com/", {waitUntil: "domcontentloaded"});
         await page.waitForSelector('#APjFqb', {visible: true});
-        await page.type('#APjFqb', quotesArr10[i]);
+        await page.type('#APjFqb', quotesArr10[i] + "Restaurant");
         await page.keyboard.press("Enter");
         await page.waitForNavigation();
         //await page.waitForNavigation();
@@ -94,6 +95,60 @@ const puppeteer = require("puppeteer");
         });
         quotesArr11.push(images4);
         console.log(quotesArr11);
+    }
+
+
+
+
+
+
+
+
+
+
+    await page.goto("https://www.google.com/", {waitUntil: "domcontentloaded"});
+    await page.waitForSelector('#APjFqb', {visible: true});
+    await page.type('#APjFqb', "Grocery Stores Near Me");
+    await page.keyboard.press("Enter");
+    await page.waitForNavigation();
+    const link4 = await page.evaluate(()=> {
+        const link2 =  document.querySelector("#Odp5De > div > div > div.ixix9e > div:nth-child(2) > div.av9nEd > div > div.kuydt > div:nth-child(2) > div > h3 > g-more-link > a");
+        const link_src = link2.getAttribute("href");
+        return link_src;
+    });
+    await page.goto("https://google.com/" + link4);
+    const details5 = await page.evaluate(() =>{
+        const image = document.querySelectorAll(".rllt__details");
+        let quotesArr = [];
+        image.forEach((tag) => {
+            quotesArr.push(tag.innerText);
+        });
+
+        return quotesArr;
+    });
+    console.log(details5);
+    var quotesArr12 = [];
+    for(let i  = 1; i < details5.length; i++){
+        let indexes = details5[i].split("\n");
+        quotesArr12.push(indexes[0]);
+    }
+    console.log(quotesArr12);
+    var quotesArr13 = [];
+    for(let i = 0; i < quotesArr12.length; i++){
+        await page.goto("https://images.google.com/", {waitUntil: "domcontentloaded"});
+        await page.waitForSelector('#APjFqb', {visible: true});
+        await page.type('#APjFqb', quotesArr12[i]);
+        await page.keyboard.press("Enter");
+        await page.waitForNavigation();
+        //await page.waitForNavigation();
+        const images5 = await page.evaluate(() => {
+            let arr3 = "";
+            var image3 = document.querySelector(".mNsIhb img");
+            arr3 = image3.src
+            return arr3;
+        });
+        quotesArr13.push(images5);
+        console.log(quotesArr13);
     }
     const express = require('express');
 const cors = require('cors');
@@ -118,6 +173,14 @@ app.get("/details3", (req, res) => {
 app.get("/details4", (req, res) => {
     res.json({"details4": quotesArr11});
 })
+
+app.get("/details5", (req, res) => {
+    res.json({"details5": details5});
+});
+
+app.get("/details6", (req, res) => {
+    res.json({"details6": quotesArr13});
+});
 
 
 app.listen(3010, () => {

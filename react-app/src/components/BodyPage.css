@@ -16,7 +16,7 @@
 }
 
 .acc_div{
-    transform: translateY(20%);
+    transform: translateY(10%);
     height: 25%;
     width: 33%;
     text-align: center;
@@ -46,7 +46,7 @@ p{
 .p_class{
     padding-top: 5px;
     padding-bottom: 5px;
-    font-size: 17px;
+    font-size: 22px;
 }
 
 .p_class2{
@@ -146,7 +146,7 @@ p{
 }
 .pic_div{
     margin: auto;
-    transform: translateY(15%);
+    transform: translateY(10%);
     text-align: center;
     width: 33%;
     height: 25%;
@@ -158,10 +158,20 @@ p{
 .pic_div2{
     box-shadow: 0 0 2px 1px;
     color: #ebe9e9;
+    width: 400px;
+    height: 400px;
+}
+.pic_div3{
+    box-shadow: 0 0 2px 1px;
+    color: #ebe9e9;
+    width: 450px;
+    height: 450px;
+    
+}
+.res_img2{
     width: 450px;
     height: 450px;
 }
-
 
 
 .body_page{
@@ -176,8 +186,8 @@ p{
 }
 
 .res_img{
-    width: 450px;
-    height: 450px;
+    width: 400px;
+    height: 400px;
 }
 
 .loc_p{
