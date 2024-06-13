@@ -131,7 +131,7 @@ function DNBodyPage(){
         }
         var affordd = document.querySelector("." + c_change);
         var checkk = document.querySelector(".check");
-        if(checkk.innerHTML.includes("20")){
+        if((checkk.innerHTML.includes("20")) || (checkk.innerHTML.includes("$$"))){
             affordd.innerHTML = "Slightly Costly";
             changerr("afford2");
         }
