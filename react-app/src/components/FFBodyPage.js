@@ -22,7 +22,7 @@ import {
 } from "react-geocode";
 
 const geolib = require("geolib");
-setKey("AIzaSyBnjjgCETeHTRLonj0UEd1_S_JafbwsroM");
+setKey("#######");
 setLanguage("en");
 setRegion("es");
 function FFBodyPage(){
