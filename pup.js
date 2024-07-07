@@ -13,13 +13,26 @@ const puppeteer = require("puppeteer");
     await page.waitForNavigation();
     //await page.click("#Odp5De > div > div > div.ixix9e > div:nth-child(2) > div.av9nEd > div > div.kuydt > div:nth-child(2) > div > h3 > g-more-link > a");
     const link = await page.evaluate(()=> {
+        if(document.querySelector("#Odp5De > div > div > div.ixix9e > div:nth-child(2) > div.av9nEd > div > div.kuydt > div:nth-child(2) > div > h3 > g-more-link > a") != null){
         const link2 =  document.querySelector("#Odp5De > div > div > div.ixix9e > div:nth-child(2) > div.av9nEd > div > div.kuydt > div:nth-child(2) > div > h3 > g-more-link > a");
         const link_src = link2.getAttribute("href");
         return link_src;
+        }
+        else{
+            return null;
+        }
+
     });
+    if(link == null){
+        console.log("Failure");
+    }
+    else{
+
+
     await page.goto("https://google.com/" + link);
-    await page.screenshot({path: "web.png"});
+    //await page.screenshot({path: "web.png"});
     const details = await page.evaluate(() =>{
+        if(document.querySelectorAll(".rllt__details") != null){
         const image = document.querySelectorAll(".rllt__details");
         let quotesArr = [];
         image.forEach((tag) => {
@@ -27,15 +40,22 @@ const puppeteer = require("puppeteer");
         });
 
         return quotesArr;
+    }
+    else{
+        return null;
+    }
     });
-    console.log(details);
+    if(details == null){
+        console.log("Failure");
+    }
+    var check = false;
     var quotesArr2 = [];
     for(let i  = 1; i < details.length; i++){
         let indexes = details[i].split("\n");
         quotesArr2.push(indexes[0]);
     }
-    console.log(quotesArr2);
     var quotesArr3 = [];
+    while(check == false){
     for(let i = 0; i < quotesArr2.length; i++){
         await page.goto("https://images.google.com/", {waitUntil: "domcontentloaded"});
         await page.waitForSelector('#APjFqb', {visible: true});
@@ -45,13 +65,32 @@ const puppeteer = require("puppeteer");
         //await page.waitForNavigation();
         const images4 = await page.evaluate(() => {
             let arr3 = "";
+            if(document.querySelector(".mNsIhb") != null){
             var image3 = document.querySelector(".mNsIhb img");
             arr3 = image3.src
             return arr3;
+            }
+            else{
+                check = true;
+            }
         });
         quotesArr3.push(images4);
-        console.log(quotesArr3);
     }
+    break;
+}
+if(check == true){
+    quotesArr3= await page.evaluate(() => {
+        if(document.querySelector(".gTrj3e") != null){
+            const imagez = document.querySelectorAll(".gTrj3e img");
+            let quotesArr3temp = [];
+            imagez.forEach((tag) => {
+                quotesArr3temp.push(tag.src);
+             });
+             return quotesArr3temp;
+        }
+    });
+}
+    
     await page.goto("https://www.google.com/", {waitUntil: "domcontentloaded"});
     await page.waitForSelector('#APjFqb', {visible: true});
     await page.type('#APjFqb', "Dine In Restaurants Near Me");
@@ -72,14 +111,14 @@ const puppeteer = require("puppeteer");
 
         return quotesArr;
     });
-    console.log(details3);
+    var check2 = false;
     var quotesArr10 = [];
     for(let i  = 1; i < details3.length; i++){
         let indexes = details3[i].split("\n");
         quotesArr10.push(indexes[0]);
     }
-    console.log(quotesArr10);
     var quotesArr11 = [];
+while(check2 == false){
     for(let i = 0; i < quotesArr10.length; i++){
         await page.goto("https://images.google.com/", {waitUntil: "domcontentloaded"});
         await page.waitForSelector('#APjFqb', {visible: true});
@@ -89,15 +128,31 @@ const puppeteer = require("puppeteer");
         //await page.waitForNavigation();
         const images4 = await page.evaluate(() => {
             let arr3 = "";
+            if(document.querySelector(".mNsIhb") != null){
             var image3 = document.querySelector(".mNsIhb img");
             arr3 = image3.src
             return arr3;
+            }
+            else{
+                check2 == true;
+            }
         });
         quotesArr11.push(images4);
-        console.log(quotesArr11);
-    }
-
-
+        }
+    break;
+}
+if(check2 == true){
+    quotesArr11 = await page.evaluate(() => {
+        if(document.querySelector(".gTrj3e") != null){
+            const imagez = document.querySelectorAll(".gTrj3e img");
+            let quotesArr3temp = [];
+            imagez.forEach((tag) => {
+                quotesArr3temp.push(tag.src);
+             });
+             return quotesArr3temp;
+        }
+    });
+}
 
 
 
@@ -126,14 +181,14 @@ const puppeteer = require("puppeteer");
 
         return quotesArr;
     });
-    console.log(details5);
     var quotesArr12 = [];
     for(let i  = 1; i < details5.length; i++){
         let indexes = details5[i].split("\n");
         quotesArr12.push(indexes[0]);
     }
-    console.log(quotesArr12);
+    var check3 = false;
     var quotesArr13 = [];
+while(check3 == false){
     for(let i = 0; i < quotesArr12.length; i++){
         await page.goto("https://images.google.com/", {waitUntil: "domcontentloaded"});
         await page.waitForSelector('#APjFqb', {visible: true});
@@ -143,13 +198,31 @@ const puppeteer = require("puppeteer");
         //await page.waitForNavigation();
         const images5 = await page.evaluate(() => {
             let arr3 = "";
+            if(document.querySelector(".mNsIhb") != null){
             var image3 = document.querySelector(".mNsIhb img");
             arr3 = image3.src
             return arr3;
+            }
+            else{
+                check3 = true;
+            }
         });
         quotesArr13.push(images5);
-        console.log(quotesArr13);
     }
+    break;
+}
+if(check3 == true){
+    quotesArr13 = await page.evaluate(() => {
+        if(document.querySelector(".gTrj3e") != null){
+            const imagez = document.querySelectorAll(".gTrj3e img");
+            let quotesArr3temp = [];
+            imagez.forEach((tag) => {
+                quotesArr3temp.push(tag.src);
+             });
+             return quotesArr3temp;
+        }
+    });
+}
     const express = require('express');
 const cors = require('cors');
 
@@ -189,6 +262,6 @@ app.listen(3010, () => {
     
     await browser.close();
 
-
+    }
 
 })();

@@ -146,7 +146,12 @@ function GCBodyPage(){
         }
         var checkk2 = document.querySelector("." + fonts);
         if(checkk2.innerHTML.length > 15){
+            if(checkk2.innerHTML.length > 40){
+                fonter("title_h3");
+            }
+            else{
             fonter("title_h2");
+            }
         }
         else{
             fonter("title_h");
