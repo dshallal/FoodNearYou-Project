@@ -5,7 +5,6 @@ const puppeteer = require("puppeteer");
     const context = await browser.createBrowserContext();
     await context.overridePermissions("https://google.com/", ["geolocation"]);
     const page = await context.newPage();
-    
     await page.goto("https://www.google.com/", {waitUntil: "domcontentloaded"});
     await page.waitForSelector('#APjFqb', {visible: true});
     await page.type('#APjFqb', "Fast Food Near Me");
@@ -13,26 +12,13 @@ const puppeteer = require("puppeteer");
     await page.waitForNavigation();
     //await page.click("#Odp5De > div > div > div.ixix9e > div:nth-child(2) > div.av9nEd > div > div.kuydt > div:nth-child(2) > div > h3 > g-more-link > a");
     const link = await page.evaluate(()=> {
-        if(document.querySelector("#Odp5De > div > div > div.ixix9e > div:nth-child(2) > div.av9nEd > div > div.kuydt > div:nth-child(2) > div > h3 > g-more-link > a") != null){
         const link2 =  document.querySelector("#Odp5De > div > div > div.ixix9e > div:nth-child(2) > div.av9nEd > div > div.kuydt > div:nth-child(2) > div > h3 > g-more-link > a");
         const link_src = link2.getAttribute("href");
         return link_src;
-        }
-        else{
-            return null;
-        }
-
     });
-    if(link == null){
-        console.log("Failure");
-    }
-    else{
-
-
     await page.goto("https://google.com/" + link);
-    //await page.screenshot({path: "web.png"});
+    await page.screenshot({path: "web.png"});
     const details = await page.evaluate(() =>{
-        if(document.querySelectorAll(".rllt__details") != null){
         const image = document.querySelectorAll(".rllt__details");
         let quotesArr = [];
         image.forEach((tag) => {
@@ -40,22 +26,15 @@ const puppeteer = require("puppeteer");
         });
 
         return quotesArr;
-    }
-    else{
-        return null;
-    }
     });
-    if(details == null){
-        console.log("Failure");
-    }
-    var check = false;
+    console.log(details);
     var quotesArr2 = [];
     for(let i  = 1; i < details.length; i++){
         let indexes = details[i].split("\n");
         quotesArr2.push(indexes[0]);
     }
+    console.log(quotesArr2);
     var quotesArr3 = [];
-    while(check == false){
     for(let i = 0; i < quotesArr2.length; i++){
         await page.goto("https://images.google.com/", {waitUntil: "domcontentloaded"});
         await page.waitForSelector('#APjFqb', {visible: true});
@@ -71,26 +50,12 @@ const puppeteer = require("puppeteer");
             return arr3;
             }
             else{
-                check = true;
+                arr3 = "";
             }
         });
         quotesArr3.push(images4);
+        console.log(quotesArr3);
     }
-    break;
-}
-if(check == true){
-    quotesArr3= await page.evaluate(() => {
-        if(document.querySelector(".gTrj3e") != null){
-            const imagez = document.querySelectorAll(".gTrj3e img");
-            let quotesArr3temp = [];
-            imagez.forEach((tag) => {
-                quotesArr3temp.push(tag.src);
-             });
-             return quotesArr3temp;
-        }
-    });
-}
-    
     await page.goto("https://www.google.com/", {waitUntil: "domcontentloaded"});
     await page.waitForSelector('#APjFqb', {visible: true});
     await page.type('#APjFqb', "Dine In Restaurants Near Me");
@@ -111,14 +76,14 @@ if(check == true){
 
         return quotesArr;
     });
-    var check2 = false;
+    console.log(details3);
     var quotesArr10 = [];
     for(let i  = 1; i < details3.length; i++){
         let indexes = details3[i].split("\n");
         quotesArr10.push(indexes[0]);
     }
+    console.log(quotesArr10);
     var quotesArr11 = [];
-while(check2 == false){
     for(let i = 0; i < quotesArr10.length; i++){
         await page.goto("https://images.google.com/", {waitUntil: "domcontentloaded"});
         await page.waitForSelector('#APjFqb', {visible: true});
@@ -134,32 +99,12 @@ while(check2 == false){
             return arr3;
             }
             else{
-                check2 == true;
+                arr3 = "";
             }
         });
         quotesArr11.push(images4);
-        }
-    break;
-}
-if(check2 == true){
-    quotesArr11 = await page.evaluate(() => {
-        if(document.querySelector(".gTrj3e") != null){
-            const imagez = document.querySelectorAll(".gTrj3e img");
-            let quotesArr3temp = [];
-            imagez.forEach((tag) => {
-                quotesArr3temp.push(tag.src);
-             });
-             return quotesArr3temp;
-        }
-    });
-}
-
-
-
-
-
-
-
+        console.log(quotesArr11);
+    }
 
     await page.goto("https://www.google.com/", {waitUntil: "domcontentloaded"});
     await page.waitForSelector('#APjFqb', {visible: true});
@@ -186,9 +131,7 @@ if(check2 == true){
         let indexes = details5[i].split("\n");
         quotesArr12.push(indexes[0]);
     }
-    var check3 = false;
     var quotesArr13 = [];
-while(check3 == false){
     for(let i = 0; i < quotesArr12.length; i++){
         await page.goto("https://images.google.com/", {waitUntil: "domcontentloaded"});
         await page.waitForSelector('#APjFqb', {visible: true});
@@ -204,25 +147,11 @@ while(check3 == false){
             return arr3;
             }
             else{
-                check3 = true;
+                arr3 = "";
             }
         });
         quotesArr13.push(images5);
     }
-    break;
-}
-if(check3 == true){
-    quotesArr13 = await page.evaluate(() => {
-        if(document.querySelector(".gTrj3e") != null){
-            const imagez = document.querySelectorAll(".gTrj3e img");
-            let quotesArr3temp = [];
-            imagez.forEach((tag) => {
-                quotesArr3temp.push(tag.src);
-             });
-             return quotesArr3temp;
-        }
-    });
-}
     const express = require('express');
 const cors = require('cors');
 
@@ -255,13 +184,12 @@ app.get("/details6", (req, res) => {
     res.json({"details6": quotesArr13});
 });
 
-
 app.listen(3010, () => {
     console.log(`Server is running on port 3010.`);
   });
     
     await browser.close();
 
-    }
+
 
 })();
