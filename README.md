@@ -2,4 +2,4 @@ React and Node js project that webscrapes using Google Search to find different 
 
 Run npm install to download dependencies.
 Run npm start dev to run the webscraping script.
-Afterwards npm start dev to build the react website.
+Afterwards npm start dev in react-app to build the react website.
