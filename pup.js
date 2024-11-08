@@ -57,7 +57,7 @@ const puppeteer = require("puppeteer");
         console.log(quotesArr3);
     }
     await page.goto("https://www.google.com/", {waitUntil: "domcontentloaded"});
-    await page.waitForSelector('#APjFqb', {visible: true});
+   // await page.waitForSelector('#APjFqb', {visible: true});
     await page.type('#APjFqb', "Dine In Restaurants Near Me");
     await page.keyboard.press("Enter");
     await page.waitForNavigation();
@@ -107,7 +107,7 @@ const puppeteer = require("puppeteer");
     }
 
     await page.goto("https://www.google.com/", {waitUntil: "domcontentloaded"});
-    await page.waitForSelector('#APjFqb', {visible: true});
+    // await page.waitForSelector('#APjFqb', {visible: true});
     await page.type('#APjFqb', "Grocery Stores Near Me");
     await page.keyboard.press("Enter");
     await page.waitForNavigation();
