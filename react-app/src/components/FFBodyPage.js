@@ -190,7 +190,7 @@ function FFBodyPage(){
             <p class = "stars">{splitter()[1]}</p>
             <img class = {class_change} src></img>
             </div>
-            <p class = "check">Review Amount: {splitter()[2]}</p>
+            <p class = "check">{splitter()[2]}</p>
             <p class = {c_change}></p>
             <p>{splitter()[3]}</p>
             <p>{splitter()[4]}</p>
