@@ -5,7 +5,7 @@ puppeteer = require("puppeteer");
     const cors = require('cors');  
     const app = express();
     app.listen(3012, () => {
-        console.log(`Server is running on port 3010.`);
+        console.log(`Server is running on port 3012.`);
       });
      const browser = await puppeteer.launch({headless: false});
     const context = await browser.createBrowserContext();

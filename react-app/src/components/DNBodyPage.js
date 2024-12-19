@@ -130,7 +130,7 @@ function DNBodyPage(){
 
         }
         var affordd = document.querySelector("." + c_change);
-        var checkk = document.querySelector(".check");
+        var checkk = document.querySelector(".stars");
         if(checkk.innerHTML.includes("$$$") || checkk.innerHTML.includes("100")){
             affordd.innerHTML = "Costly";
             changerr("afford3");
