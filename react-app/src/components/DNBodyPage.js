@@ -37,13 +37,13 @@ function DNBodyPage(){
     const [nimage, nimges] = useState(arrow);
     const [vimage, vimages] = useState("");
     useEffect(() => {
-      fetch("http://localhost:3010/details3")
+      fetch("http://localhost:3011/details3")
         .then((res) => res.json())
         .then((data) => setBEData(data));
     }, []);
 
   useEffect(() => {
-       fetch("http://localhost:3010/details4")
+       fetch("http://localhost:3011/details4")
      .then((res) => res.json())
        .then((data) => setBEData2(data));
    }, []);

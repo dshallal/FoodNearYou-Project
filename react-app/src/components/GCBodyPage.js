@@ -37,13 +37,13 @@ function GCBodyPage(){
     const [nimage, nimges] = useState(arrow);
     const [vimage, vimages] = useState("");
     useEffect(() => {
-      fetch("http://localhost:3010/details5")
+      fetch("http://localhost:3012/details5")
         .then((res) => res.json())
         .then((data) => setBEData(data));
     }, []);
 
   useEffect(() => {
-       fetch("http://localhost:3010/details6")
+       fetch("http://localhost:3012/details6")
      .then((res) => res.json())
        .then((data) => setBEData2(data));
    }, []);
