@@ -42,7 +42,7 @@ puppeteer = require("puppeteer");
     for(let i = 0; i < quotesArr10.length; i++){
         await page.goto("https://images.google.com/", {waitUntil: "domcontentloaded"});
         await page.waitForSelector('#APjFqb', {visible: true});
-        await page.type('#APjFqb', quotesArr10[i] + "Restaurant");
+        await page.type('#APjFqb', quotesArr10[i]);
         await page.keyboard.press("Enter");
         await page.waitForNavigation();
         //await page.waitForNavigation();
