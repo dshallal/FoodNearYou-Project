@@ -17,9 +17,9 @@ puppeteer = require("puppeteer");
     await page.keyboard.press("Enter");
     await page.waitForNavigation();
     const link3 = await page.evaluate(()=> {
-        const link2 =  document.querySelector("#Odp5De > div:nth-child(1) > div > div > div > div > div > div.ixix9e > div.av9nEd > div > div.kuydt > div:nth-child(2) > div > h3 > g-more-link > a");
-        const link_src = link2.getAttribute("href");
-        return link_src;
+        const element = document.querySelector('a.CHn7Qb.pYouzb');
+        const href = element.getAttribute('href');
+        return href;
     });
     await page.goto("https://google.com/" + link3);
     const details3 = await page.evaluate(() =>{
